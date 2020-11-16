@@ -1,0 +1,2 @@
+class BunkersController < ApplicationController
+end
