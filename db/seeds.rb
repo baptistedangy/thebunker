@@ -6,33 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Bunker.destroy_all
+User.destroy_all
+puts "creating users"
+U1 = User.create(email: "aida@test.org", password: "lewagon")
+U2 = User.create(email: "baptiste@test.org", password: "lewagon")
+U3 = User.create(email: "bastien@test.org", password: "lewagon")
 
-
-U1 = User.new(email: "aida@test.org", password: "lewagon")
-U2 = User.new(email: "baptiste@test.org", password: "lewagon")
-U3 = User.new(email: "bastien@test.org", password: "lewagon")
-
-
-B1.user = U1
-B2.user = U1
-B3.user = U1
-B4.user = U1
-B5.user = U2
-B6.user = U2
-B7.user = U2
-B8.user = U2
-B9.user = U3
-B10.user = U3
-
-
-B1 = Bunker.new( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url" )
-B2 = Bunker.new( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url" )
-B3 = Bunker.new( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url" )
-B4 = Bunker.new( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url" )
-B5 = Bunker.new( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url" )
-B6 = Bunker.new( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url" )
-B7 = Bunker.new( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url" )
-B8 = Bunker.new( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url" )
-B9 = Bunker.new( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url" )
-B10 = Bunker.new( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url" )
+puts "creating bunkers"
+B1 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U1 )
+B2 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U1 )
+B3 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U1 )
+B4 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U1 )
+B5 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U2 )
+B6 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U2 )
+B7 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U2 )
+B8 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U3 )
+B9 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U3 )
+B10 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U3 )
 
