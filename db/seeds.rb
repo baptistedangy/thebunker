@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+require "open-uri"
 Bunker.destroy_all
 User.destroy_all
 puts "creating users"
@@ -14,14 +14,27 @@ U2 = User.create(email: "baptiste@test.org", password: "lewagon")
 U3 = User.create(email: "bastien@test.org", password: "lewagon")
 
 puts "creating bunkers"
-B1 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U1 )
-B2 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U1 )
-B3 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U1 )
-B4 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U1 )
-B5 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U2 )
-B6 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U2 )
-B7 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U2 )
-B8 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U3 )
-B9 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U3 )
-B10 = Bunker.create( name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", photo: "url", user: U3 )
-
+file = URI.open("https://compote.slate.com/images/f547eb84-d4e1-497b-bc70-aafae930c922.jpeg")
+bunker = Bunker.new( name: "The Basic Bunker", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", user: U1 )
+bunker.photo.attach(io: file, filename: "bunker1")
+bunker.save
+file = URI.open("https://compote.slate.com/images/f547eb84-d4e1-497b-bc70-aafae930c922.jpeg")
+bunker = Bunker.new( name: "Bunker 2", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", user: U1 )
+bunker.photo.attach(io: file, filename: "bunker2")
+bunker.save
+file = URI.open("https://compote.slate.com/images/f547eb84-d4e1-497b-bc70-aafae930c922.jpeg")
+bunker = Bunker.new( name: "Bunker 3", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", user: U2 )
+bunker.photo.attach(io: file, filename: "bunker2")
+bunker.save
+file = URI.open("https://compote.slate.com/images/f547eb84-d4e1-497b-bc70-aafae930c922.jpeg")
+bunker = Bunker.new( name: "Bunker 4", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", user: U2 )
+bunker.photo.attach(io: file, filename: "bunker2")
+bunker.save
+file = URI.open("https://compote.slate.com/images/f547eb84-d4e1-497b-bc70-aafae930c922.jpeg")
+bunker = Bunker.new( name: "Bunker 5", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", user: U3 )
+bunker.photo.attach(io: file, filename: "bunker2")
+bunker.save
+file = URI.open("https://compote.slate.com/images/f547eb84-d4e1-497b-bc70-aafae930c922.jpeg")
+bunker = Bunker.new( name: "Bunker 6", address: "56A Shoreditch High St, London E1 6PQ", price: 100, capacity: 4, description: "blabla", user: U3 )
+bunker.photo.attach(io: file, filename: "bunker2")
+bunker.save
