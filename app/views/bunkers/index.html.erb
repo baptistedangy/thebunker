@@ -1,1 +1,3 @@
-index.html.erb
+<% if policy(Bunker).create? %>
+  <%= link_to "Add your bunker", new_bunker_path %>
+<% end %>
