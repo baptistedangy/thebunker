@@ -39,6 +39,6 @@ class BunkersController < ApplicationController
   private
 
   def bunker_params
-    params.require (:bunker).permit(:name, :price, :description, :capacity, :address, :photo, :rating)
+    params.require(:bunker).permit(:name, :price, :description, :capacity, :address, :photo, :rating)
   end
 end
