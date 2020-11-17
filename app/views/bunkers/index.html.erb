@@ -1,3 +1,6 @@
+<% @bunkers.each do |bunker| %>
+  <%= bunker.name %>
+<% end %>
 <% if policy(Bunker).create? %>
   <%= link_to "Add your bunker", new_bunker_path %>
 <% end %>
