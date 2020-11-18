@@ -6,7 +6,8 @@ class BunkersController < ApplicationController
     @markers = @bunkers.geocoded.map do |bunker|
       {
         lat: bunker.latitude,
-        lng: bunker.longitude
+        lng: bunker.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { bunker: bunker })
       }
     end
   end
