@@ -3,9 +3,11 @@
   <% @bunkers.each do |bunker| %>
     <div class="card-category">
       <div class="card-trip">
-        <%= link_to bunker_path(bunker) do %>
-          <%= cl_image_tag bunker.photo.key %>
-        <% end%>
+        <% if bunker.photo.attached? %>
+          <%= link_to bunker_path(bunker) do %>
+            <%= cl_image_tag bunker.photo.key %>
+          <% end %>
+        <% end %>
         <div class="card-trip-infos">
           <div>
             <h2><%= bunker.name %></h2>
