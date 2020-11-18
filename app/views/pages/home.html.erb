@@ -1,10 +1,29 @@
 <div class="home-banner">
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn.home-designing.com/wp-content/uploads/2020/07/round-skylight.jpg);">
     <div class="container">
-      <h1><%= link_to 'Your Bunkers', bunkers_path, class: "a-primary" %></h1>
-        <div class="under-container">
-        <p><span id="banner-typed-text"></span></p>
-        </div>
+      <h1 class="a-primary">Checkout our Bunkers</h1>
+      <br>
+      <br>
+      <p><span id="banner-typed-text"></span></p>
     </div>
   </div>
+  <br>
+  <br>
+  <div class="cards">
+  <% Bunker.all.first(3).each do |bunker| %>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    <div class="card-trip">
+      <%= cl_image_tag bunker.photo.key %>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= bunker.name %></h2>
+          <p><%= bunker.description %></p>
+        </div>
+          <h2 class="card-trip-pricing">€<%= bunker.price %></h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
 </div>
