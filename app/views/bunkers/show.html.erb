@@ -8,7 +8,9 @@
     <div class="descrition">
       <div>
         <p><strong>Description</strong></p>
-        <p><%= @bunker.description %></p>
+        <% @bunker.description.split(".").each do |l|  %>
+          <p><%= l %></p>
+          <% end %>
       </div>
       <div>
         <p><strong>address</strong></p>
