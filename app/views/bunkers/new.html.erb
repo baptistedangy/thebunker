@@ -1,1 +1,12 @@
-new.html.erb
+<div class="container text-center">
+  <h1> Add your bunker !!!</h1>
+  <%= simple_form_for(@bunker) do |f| %>
+    <%= f.input :name, input_html: { class: 'recognitionStyling' }, placeholder: "Name" %>
+    <%= f.input :description, input_html: { class: 'recognitionStyling' }, placeholder: "Description" %>
+    <%= f.input :price, input_html: { class: 'recognitionStyling' }, placeholder: "Price" %>
+    <%= f.input :capacity, input_html: { class: 'recognitionStyling' }, placeholder: "Capacity" %>
+    <%= f.input :address, input_html: { class: 'recognitionStyling' }, placeholder: "Address" %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit %>
+  <% end %>
+</div>

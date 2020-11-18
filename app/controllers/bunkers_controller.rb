@@ -1,14 +1,18 @@
 class BunkersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
-    @bunkers = Bunker.all
+    @bunkers = policy_scope(Bunker).order(created_at: :desc)
   end
 
   def show
     @bunker = Bunker.find(params[:id])
+    authorize @bunker
   end
 
   def new
     @bunker = Bunker.new
+    authorize @bunker
   end
 
   def edit
@@ -17,6 +21,8 @@ class BunkersController < ApplicationController
 
   def create
     @bunker = Bunker.new(bunker_params)
+    authorize @bunker
+    @bunker.user_id = current_user.id
     if @bunker.save
       redirect_to bunker_path(@bunker)
     else
@@ -39,6 +45,6 @@ class BunkersController < ApplicationController
   private
 
   def bunker_params
-    params.require(:bunker).permit(:name, :price, :description, :capacity, :address, :photo, :rating)
+    params.require(:bunker).permit(:name, :price, :description, :capacity, :address, :photo)
   end
 end
