@@ -12,7 +12,7 @@
   <br>
   <div class="cards">
   <% Bunker.all.first(3).each do |bunker| %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
     <div class="card-trip">
       <%= cl_image_tag bunker.photo.key %>
       <div class="card-trip-infos">
