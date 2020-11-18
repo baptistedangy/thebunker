@@ -1,1 +1,20 @@
-show.html.erb
+<div class="container">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @bunker.photo.key %>')">
+    <div class="container">
+      <h1><%= @bunker.name %></h1>
+      <h2> <%= @bunker.price %>€/night </h2>
+      <p class="ml-4"> <%= @bunker.capacity %> <i class="fas fa-bed"></i> <p>
+    </div>
+    <div class="descrition">
+      <div>
+        <p><strong>Description</strong></p>
+        <p><%= @bunker.description %></p>
+      </div>
+      <div>
+        <p><strong>address</strong></p>
+        <p><%= @bunker.address %></p>
+      </div>
+    </div>
+ </div>
+</div>
+  <button name="button" class="btn book-now d-flex justify-content-center mt-4">Book now</button>
