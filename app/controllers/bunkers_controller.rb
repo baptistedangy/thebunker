@@ -3,7 +3,7 @@ class BunkersController < ApplicationController
 
   def index
     @bunkers = policy_scope(Bunker).order(created_at: :desc)
-    @markers = @Bunkers.geocoded.map do |bunker|
+    @markers = @bunkers.geocoded.map do |bunker|
       {
         lat: bunker.latitude,
         lng: bunker.longitude
