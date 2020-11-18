@@ -7,6 +7,7 @@ class BunkersController < ApplicationController
 
   def show
     @bunker = Bunker.find(params[:id])
+    authorize @bunker
   end
 
   def new
@@ -21,6 +22,7 @@ class BunkersController < ApplicationController
   def create
     @bunker = Bunker.new(bunker_params)
     authorize @bunker
+    @bunker.user_id = current_user.id
     if @bunker.save
       redirect_to bunker_path(@bunker)
     else
