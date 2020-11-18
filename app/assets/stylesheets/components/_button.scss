@@ -1,0 +1,10 @@
+.book-now {
+  margin: auto;
+  font-size: 30px;
+  background-color: #F5385E;
+  transition: 0.3s;
+  &:hover {
+    background-color: #F5385E;
+    opacity: .7;
+  }
+}
