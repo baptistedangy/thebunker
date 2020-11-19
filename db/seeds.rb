@@ -9,9 +9,19 @@ require "open-uri"
 Bunker.destroy_all
 User.destroy_all
 puts "creating users"
-U1 = User.create(email: "aida@test.org", password: "lewagon")
-U2 = User.create(email: "baptiste@test.org", password: "lewagon")
-U3 = User.create(email: "bastien@test.org", password: "lewagon")
+
+file = URI.open("https://avatars0.githubusercontent.com/u/61019314?v=4")
+U1 = User.new(email: "aida@test.org", password: "lewagon")
+U1.photo.attach(io: file, filename: "user1")
+U1.save
+file = URI.open("https://avatars2.githubusercontent.com/u/69153626?v=4")
+U2 = User.new(email: "baptiste@test.org", password: "lewagon")
+U2.photo.attach(io: file, filename: "user2")
+U2.save
+file = URI.open("https://avatars3.githubusercontent.com/u/69260934?v=4")
+U3 = User.new(email: "bastien@test.org", password: "lewagon")
+U3.photo.attach(io: file, filename: "user3")
+U3.save
 
 puts "creating bunkers"
 file = URI.open("https://compote.slate.com/images/f547eb84-d4e1-497b-bc70-aafae930c922.jpeg")
