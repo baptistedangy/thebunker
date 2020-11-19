@@ -3,6 +3,13 @@ class BunkersController < ApplicationController
 
   def index
     @bunkers = policy_scope(Bunker).order(created_at: :desc)
+    @markers = @bunkers.geocoded.map do |bunker|
+      {
+        lat: bunker.latitude,
+        lng: bunker.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { bunker: bunker })
+      }
+    end
   end
 
   def show

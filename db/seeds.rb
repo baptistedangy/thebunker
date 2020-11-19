@@ -38,4 +38,3 @@ file = URI.open("http://www.musee-art-industrie.saint-etienne.fr/sites/default/f
 bunker = Bunker.new( name: "The Warrior Bunker", address: "6200 Hermann Park Dr, Houston, TX 77030, États-Unis", price: 200, capacity: 3, description: "Always be prepared", user: U3 )
 bunker.photo.attach(io: file, filename: "bunker6")
 bunker.save
-
