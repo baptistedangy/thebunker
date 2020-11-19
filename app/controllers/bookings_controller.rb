@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @bunker = Bunker.find(params[:bunker_id])
+    raise
     @booking.bunker = @bunker
     if @booking.save
       redirect_to booking_path(@booking)
@@ -42,6 +43,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require (:booking).permit(:nb_participants, :start_date, :end_date, :total_price)
+    params.require(:booking).permit(:nb_participants, :start_date, :end_date, :total_price)
   end
 end
