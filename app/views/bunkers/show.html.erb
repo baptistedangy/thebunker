@@ -1,22 +1,48 @@
-<div class="container mt-5">
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @bunker.photo.key %>')">
-    <div class="container">
-      <h1><%= @bunker.name %></h1>
-      <h2> <%= @bunker.price %>€/night </h2>
-      <p class="ml-4"> <%= @bunker.capacity %> <i class="fas fa-bed"></i> <p>
-    </div>
-    <div class="descrition">
-      <div>
-        <p><strong>Description</strong></p>
-        <% @bunker.description.split(".").each do |l|  %>
-          <p><%= l %></p>
-          <% end %>
+<div class="container">
+
+  <div class="bunker-show">
+
+      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @bunker.photo.key %>')">
+        <div class="name">
+          <h1> <%= @bunker.name %></h1>
+        </div>
+        <div class="tags">
+          <h2> <%= @bunker.price %>€</h2>
+          <p class="ml-4"> <%= @bunker.capacity %> <i class="fas fa-bed"></i> </p>
+        </div>
       </div>
-      <div>
-        <p><strong>address</strong></p>
-        <p><%= @bunker.address %></p>
+
+      <div class="details">
+
+        <div class="description">
+          <p><em>Description: </em><%= @bunker.description%><p>
+          <p> <em>Address: </em> <%= @bunker.address %></p>
+        </div>
+
+        <div class="booking_form">
+          <div class="form">
+            <%= simple_form_for [@bunker, @booking] do |f| %>
+              <%= f.input :start_date, input_html: { class: 'recognitionStyling' }, placeholder: "" %>
+              <%= f.input :end_date, input_html: { class: 'recognitionStyling' }, placeholder: "" %>
+              <%= f.input :nb_participants, input_html: { class: 'recognitionStyling' }, placeholder: "1" %>
+              <%= f.submit "Book now", class: 'btn' %>
+            <% end %>
+          </div>
+
+          <div class = "price_box">
+            <p><%= @bunker.price %>€ x <%= @booking.start_date %>  </p>
+          </div>
+
+        </div>
       </div>
-    </div>
- </div>
+  </div>
 </div>
-  <button name="button" class="btn book-now d-flex justify-content-center mt-4">Book now</button>
+
+
+
+
+
+
+
+
+

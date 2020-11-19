@@ -15,6 +15,7 @@ class BunkersController < ApplicationController
   def show
     @bunker = Bunker.find(params[:id])
     authorize @bunker
+    @booking = Booking.new
   end
 
   def new
