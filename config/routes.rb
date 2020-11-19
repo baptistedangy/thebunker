@@ -6,5 +6,13 @@ Rails.application.routes.draw do
       resources :bookings, only: [:new, :create]
       resources :reviews, only: [:new, :create]
     end
-    resources :bookings, only: [:show, :index, :edit, :update, :destroy]
-end
+    resources :bookings, only: [:show, :edit, :update, :destroy]
+      # member do
+      #   patch :accepted
+      #   patch :refused
+      get 'dashboard', to: 'pages#dashboard'
+      end
+    # end
+    # resources :pages
+# end
+

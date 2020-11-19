@@ -1,0 +1,79 @@
+<%= render "shared/search_form" %>
+
+<div class="container">
+  <h1> My Bookings </h1>
+    <div class="cards mt-5">
+      <% @user.bookings.each do |booking| %>
+        <div class="card-category">
+          <div class="card-trip">
+            <% if booking.bunker.photo.attached? %>
+              <%= link_to bunker_path(booking.bunker) do %>
+               <%= cl_image_tag booking.bunker.photo.key %>
+              <% end %>
+            <% end%>
+            <div class="card-trip-infos">
+            <div>
+              <h2><%= booking.bunker.name %></h2>
+              <p><%= booking.bunker.description %></p>
+              <p>Status: <%= booking.status %></p>
+            </div>
+              <h2 class="card-trip-pricing">€<%= booking.bunker.price %></h2>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <hr>
+  <h1> My Bunkers </h1>
+    <div class="cards mt-5">
+      <% @ownerbunkers.each do |bunker| %>
+        <div class="card-category">
+          <div class="card-trip">
+           <% if bunker.photo.attached? %>
+              <%= link_to bunker_path(bunker) do %>
+               <%= cl_image_tag bunker.photo.key %>
+              <% end %>
+            <% end%>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= bunker.name %></h2>
+                <p><%= bunker.description %></p>
+              </div>
+              <h2 class="card-trip-pricing">€<%= bunker.price %></h2>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <hr>
+    <h1> My Pending Bunkers </h1>
+    <div class="cards mt-5">
+      <% @bookings.each do |booking| %>
+        <div class="card-category">
+          <div class="card-trip">
+           <% if booking.bunker.photo.attached? %>
+              <%= link_to bunker_path(booking) do %>
+               <%= cl_image_tag booking.bunker.photo.key %>
+              <% end %>
+            <% end%>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= booking.bunker.name %></h2>
+                <p>Start at:<%= booking.start_date %> and ends at:<%= booking.end_date %></p>
+                <% if booking.status == "pending" %>
+                <%= link_to "Accept", booking_path(booking), method: :patch, data: { confirm: "Sure to accept ? "} %>
+                <%= link_to "Refuse", booking_path(booking), method: :patch, data: { confirm: "Sure to refuse ? "} %>
+                <% else %>
+                <p> <%= booking.status %></p>
+               <% end%>
+              </div>
+              <h2 class="card-trip-pricing">€<%= booking.bunker.price %></h2>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
