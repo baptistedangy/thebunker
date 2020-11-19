@@ -41,6 +41,22 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-.recognitionStyling {
-border-radius: 25px;
+.flexbox-class {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.form_size {
+  background-color: white;
+  padding: 35px;
+  box-shadow: 1px -3px 10px grey;
+  margin-top: 25px;
+}
+
+#submit-button {
+  background: #edc2a1;
+  border-radius: 4px;
+  line-height: 14px;
+  padding: 15px;
 }
