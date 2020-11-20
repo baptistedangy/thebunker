@@ -18,7 +18,7 @@
               <p>Status: <%= booking.status %></p>
             </div>
               <h2 class="card-trip-pricing">€<%= booking.bunker.price %></h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+             <%= cl_image_tag booking.bunker.user.photo.key, class: "card-trip-user avatar-bordered"%>
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@
                 <p><%= bunker.description %></p>
               </div>
               <h2 class="card-trip-pricing">€<%= bunker.price %></h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                <%= cl_image_tag bunker.user.photo.key, class: "card-trip-user avatar-bordered"%>
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@
                <% end%>
               </div>
               <h2 class="card-trip-pricing">€<%= booking.bunker.price %></h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+             <%= cl_image_tag booking.bunker.user.photo.key, class: "card-trip-user avatar-bordered"%>
             </div>
           </div>
         </div>
