@@ -1,5 +1,4 @@
 <%= render "shared/search_form" %>
-
 <div class="container">
   <h1> My Bookings </h1>
     <div class="cards mt-5">
@@ -63,8 +62,8 @@
                 <h2><%= booking.bunker.name %></h2>
                 <p>Start at:<%= booking.start_date %> and ends at:<%= booking.end_date %></p>
                 <% if booking.status == "pending" %>
-                <%= link_to "Accept", booking_path(booking), method: :patch, data: { confirm: "Sure to accept ? "} %>
-                <%= link_to "Refuse", booking_path(booking), method: :patch, data: { confirm: "Sure to refuse ? "} %>
+                <%= link_to "Accept", booking_path(booking, status: "Accept"), method: :patch, data: { confirm: "Sure to accept ? "} %>
+                <%= link_to "Refuse", booking_path(booking, status: "Refuse"), method: :patch, data: { confirm: "Sure to refuse ? "} %>
                 <% else %>
                 <p> <%= booking.status %></p>
                <% end%>
