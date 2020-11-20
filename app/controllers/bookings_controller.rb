@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+
   def index
     @bookings = Booking.all
   end
@@ -18,10 +19,12 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    authorize @booking
     @bunker = Bunker.find(params[:bunker_id])
     @booking.bunker = @bunker
+    @booking.user_id = current_user.id
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to dashboard_path
     else
       render :new
     end
