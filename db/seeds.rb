@@ -37,7 +37,7 @@ U5.save
 
 puts "creating bunkers"
 file = URI.open("https://compote.slate.com/images/f547eb84-d4e1-497b-bc70-aafae930c922.jpeg")
-bunker = Bunker.new( name: "The Basic Bunker", address: "700 County Rd 941D Alvin, TX 77511 États-Unis", price: 20, capacity: 4, description: "Good for kids", user: U1 )
+bunker = Bunker.new( name: "The Basic Bunker", address: "3060  Grey Fox Farm Road, TX 77053, États-Unis", price: 20, capacity: 4, description: "Good for kids", user: U1 )
 bunker.photo.attach(io: file, filename: "bunker1")
 bunker.save
 B1 = Bunker.last
@@ -49,7 +49,7 @@ bunker.save
 
 
 file = URI.open("https://www.idealwine.net/wp-content/uploads/2016/02/cave-622x311.jpg")
-bunker = Bunker.new( name: "The Wine Bunker", address: "21130 Natchez Crossing St Richmond, TX 77406, États-Unis", price: 100, capacity: 2, description: "Joyful Survivalism", user: U4 )
+bunker = Bunker.new( name: "The Wine Bunker", address: "3347  Adams Drive, TX 77099, États-Unis", price: 100, capacity: 2, description: "Joyful Survivalism", user: U4 )
 bunker.photo.attach(io: file, filename: "bunker3")
 bunker.save
 file = URI.open("https://image.shutterstock.com/image-photo/round-guerrilla-army-bunker-eastern-600w-1437847907.jpg")
