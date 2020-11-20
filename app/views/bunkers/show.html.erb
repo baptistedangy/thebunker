@@ -22,17 +22,12 @@
         <div class="booking_form">
           <div class="form">
             <%= simple_form_for [@bunker, @booking] do |f| %>
-              <%= f.input :start_date, input_html: { class: 'recognitionStyling' }, placeholder: "" %>
-              <%= f.input :end_date, input_html: { class: 'recognitionStyling' }, placeholder: "" %>
+              <%= f.input :start_date, as: :string, input_html: { type: :date, class: 'recognitionStyling' }, placeholder: "" %>
+              <%= f.input :end_date, as: :string, input_html: { type: :date, class: 'recognitionStyling' }, placeholder: "" %>
               <%= f.input :nb_participants, input_html: { class: 'recognitionStyling' }, placeholder: "1" %>
               <%= f.submit "Book now", class: 'btn' %>
             <% end %>
           </div>
-
-          <div class = "price_box">
-            <p><%= @bunker.price %>€ x <%= @booking.start_date %>  </p>
-          </div>
-
         </div>
       </div>
   </div>
