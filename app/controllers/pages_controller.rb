@@ -13,3 +13,4 @@ class PagesController < ApplicationController
     @bookings = Booking.where(bunker: @ownerbunkers)
   end
 end
+

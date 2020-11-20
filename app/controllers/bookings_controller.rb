@@ -40,6 +40,11 @@ class BookingsController < ApplicationController
   redirect_to booking_path(@booking)
   end
 
+  def accept
+    booking = Booking.find(params[:id])
+    booking.update_attribute(:status, "accepted")
+  end
+
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
