@@ -7,7 +7,7 @@ class BunkersController < ApplicationController
       {
         lat: bunker.latitude,
         lng: bunker.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { bunker: bunker })
+        infoWindow: render_to_string(partial: "info_window", locals: { bunker: bunker }),
       }
     end
   end
@@ -15,6 +15,7 @@ class BunkersController < ApplicationController
   def show
     @bunker = Bunker.find(params[:id])
     authorize @bunker
+    @booking = Booking.new
   end
 
   def new
