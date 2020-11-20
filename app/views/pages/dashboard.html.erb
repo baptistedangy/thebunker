@@ -1,5 +1,4 @@
 <%= render "shared/search_form" %>
-
 <div class="container">
   <h1> My Bookings </h1>
     <div class="cards mt-5">
@@ -18,7 +17,7 @@
               <p>Status: <%= booking.status %></p>
             </div>
               <h2 class="card-trip-pricing">€<%= booking.bunker.price %></h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+             <%= cl_image_tag booking.bunker.user.photo.key, class: "card-trip-user avatar-bordered"%>
           </div>
         </div>
       </div>
@@ -41,7 +40,7 @@
                 <p><%= bunker.description %></p>
               </div>
               <h2 class="card-trip-pricing">€<%= bunker.price %></h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                <%= cl_image_tag bunker.user.photo.key, class: "card-trip-user avatar-bordered"%>
             </div>
           </div>
         </div>
@@ -63,14 +62,14 @@
                 <h2><%= booking.bunker.name %></h2>
                 <p>Start at:<%= booking.start_date %> and ends at:<%= booking.end_date %></p>
                 <% if booking.status == "pending" %>
-                <%= link_to "Accept", booking_path(booking), method: :patch, data: { confirm: "Sure to accept ? "} %>
-                <%= link_to "Refuse", booking_path(booking), method: :patch, data: { confirm: "Sure to refuse ? "} %>
+                <%= link_to "Accept", booking_path, method: :patch, data: { confirm: "Sure to accept ? "} %>
+                <%= link_to "Refuse", booking_path, method: :patch, data: { confirm: "Sure to refuse ? "} %>
                 <% else %>
                 <p> <%= booking.status %></p>
                <% end%>
               </div>
               <h2 class="card-trip-pricing">€<%= booking.bunker.price %></h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+             <%= cl_image_tag booking.bunker.user.photo.key, class: "card-trip-user avatar-bordered"%>
             </div>
           </div>
         </div>
