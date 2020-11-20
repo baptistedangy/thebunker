@@ -1,4 +1,7 @@
 class BookingsController < ApplicationController
+  def index
+    @bookings = Booking.all
+  end
 
   def show
     @booking = Booking.find(params[:id])
@@ -16,7 +19,6 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @bunker = Bunker.find(params[:bunker_id])
-    raise
     @booking.bunker = @bunker
     if @booking.save
       redirect_to booking_path(@booking)
@@ -27,28 +29,18 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    @booking.update(booking_params)
-    redirect_to booking_path(@booking)
+    if params[:status] == "Accept"
+      @booking.update(status: "Accept")
+    else
+      @booking.update(status: "Refuse")
+    end
+  redirect_to booking_path(@booking)
   end
 
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to booking_path
-  end
-
-  def accepted
-    @booking = Booking.find(params[:id])
-    authorize @booking
-    @booking.update(status: "accepted")
-    redirect_to bookings_path
-  end
-
-  def refused
-    @booking = Booking.find(params[:id])
-    authorize @booking
-    @booking.update(status: "refused")
-    redirect_to bookings_path
   end
 
   private
