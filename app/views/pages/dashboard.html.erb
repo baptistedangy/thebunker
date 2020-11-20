@@ -14,9 +14,9 @@
             <div>
               <h2><%= booking.bunker.name %></h2>
               <p><%= booking.bunker.description %></p>
-              <p>Status: <%= booking.status %></p>
+              <p class="statuus">Status: <%= booking.status %></p>
             </div>
-              <h2 class="card-trip-pricing">€<%= booking.bunker.price %></h2>
+              <h2 class="card-trip-pricing">€<%= booking.bunker.price * (booking.end_date - booking.start_date).to_i  %></h2>
              <%= cl_image_tag booking.bunker.user.photo.key, class: "card-trip-user avatar-bordered"%>
           </div>
         </div>
@@ -68,7 +68,7 @@
                 <p> <%= booking.status %></p>
                <% end%>
               </div>
-              <h2 class="card-trip-pricing">€<%= booking.bunker.price %></h2>
+              <h2 class="card-trip-pricing">€ <%= booking.bunker.price * (booking.end_date - booking.start_date).to_i %></h2>
              <%= cl_image_tag booking.bunker.user.photo.key, class: "card-trip-user avatar-bordered"%>
             </div>
           </div>

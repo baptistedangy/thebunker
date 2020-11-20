@@ -39,7 +39,7 @@ class BookingsController < ApplicationController
     else
       @booking.update(status: "Refuse")
     end
-  redirect_to booking_path(@booking)
+  redirect_to dashboard_path
   end
 
   def accept
