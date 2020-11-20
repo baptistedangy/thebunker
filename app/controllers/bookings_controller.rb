@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-
   def show
     @booking = Booking.find(params[:id])
   end
@@ -18,6 +17,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @bunker = Bunker.find(params[:bunker_id])
     @booking.bunker = @bunker
+    @booking.user_id = current_user.id
     if @booking.save
       redirect_to dashboard_path
     else
