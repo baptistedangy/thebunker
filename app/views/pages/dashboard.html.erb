@@ -1,78 +1,90 @@
 <%= render "shared/search_form" %>
 <div class="container">
-  <h1> My Bookings </h1>
-    <div class="cards mt-5">
-      <% @user.bookings.each do |booking| %>
-        <div class="card-category">
-          <div class="card-trip">
-            <% if booking.bunker.photo.attached? %>
-              <%= link_to bunker_path(booking.bunker) do %>
-               <%= cl_image_tag booking.bunker.photo.key %>
-              <% end %>
-            <% end%>
-            <div class="card-trip-infos">
-            <div>
-              <h2><%= booking.bunker.name %></h2>
-              <p><%= booking.bunker.description %></p>
-              <p class="statuus">Status: <%= booking.status %></p>
+  <div class="row">
+    <div class="col-6">
+      <div class="cards-dashboard border-right border-secondary pr-5 mt-5">
+        <h1> Booking Requests </h1>
+        <% @bookings.each do |booking| %>
+          <div class="card-category">
+            <div class="card-trip">
+             <% if booking.bunker.photo.attached? %>
+                <%= link_to bunker_path(booking) do %>
+                 <%= cl_image_tag booking.bunker.photo.key %>
+                <% end %>
+              <% end%>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= booking.bunker.name %></h2>
+                  <p>Date:<%= booking.start_date %> - <%= booking.end_date %></p>
+                  <% if booking.status == "pending" %>
+                  <div class="mt-2">
+                    <%= link_to "Accept", booking_path(booking, status: "Accept"), class: "btn-flat", method: :patch, data: { confirm: "Sure to accept ? "} %>
+                    <%= link_to "Refuse", booking_path(booking, status: "Refuse"), class: "btn-flat-refuse", method: :patch, data: { confirm: "Sure to refuse ? "} %>
+                  </div>
+                  <% else %>
+                  <p> <%= booking.status %></p>
+                 <% end%>
+                </div>
+                <h2 class="card-trip-pricing">€<%= booking.bunker.price * (booking.end_date - booking.start_date).to_i %></h2>
+               <%= cl_image_tag booking.bunker.user.photo.key, class: "card-trip-user avatar-bordered"%>
+              </div>
             </div>
-              <h2 class="card-trip-pricing">€<%= booking.bunker.price * (booking.end_date - booking.start_date).to_i  %></h2>
-             <%= cl_image_tag booking.bunker.user.photo.key, class: "card-trip-user avatar-bordered"%>
           </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+    <div class="col-6">
+      <div class="cards-dashboard border-left border-secondary pl-5 mt-5">
+        <h1> My Bookings </h1>
+        <% @user.bookings.each do |booking| %>
+          <div class="card-category">
+            <div class="card-trip">
+              <% if booking.bunker.photo.attached? %>
+                <%= link_to bunker_path(booking.bunker) do %>
+                 <%= cl_image_tag booking.bunker.photo.key %>
+                <% end %>
+              <% end%>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= booking.bunker.name %></h2>
+                  <p><%= booking.bunker.description %></p>
+                  <p>Status: <%= booking.status %></p>
+                </div>
+                  <h2 class="card-trip-pricing">€<%= booking.bunker.price * (booking.end_date - booking.start_date).to_i %></h2>
+                  <%= cl_image_tag booking.bunker.user.photo.key, class: "card-trip-user avatar-bordered"%>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
   <hr>
-  <h1> My Bunkers </h1>
-    <div class="cards mt-5">
-      <% @ownerbunkers.each do |bunker| %>
-        <div class="card-category">
-          <div class="card-trip">
-           <% if bunker.photo.attached? %>
-              <%= link_to bunker_path(bunker) do %>
-               <%= cl_image_tag bunker.photo.key %>
-              <% end %>
-            <% end%>
-            <div class="card-trip-infos">
-              <div>
-                <h2><%= bunker.name %></h2>
-                <p><%= bunker.description %></p>
+  <br>
+  <div class="row">
+    <div class="col-12">
+      <h1> My Bunkers </h1>
+      <div class="cards mt-5">
+        <% @ownerbunkers.each do |bunker| %>
+          <div class="card-category">
+            <div class="card-trip">
+             <% if bunker.photo.attached? %>
+                <%= link_to bunker_path(bunker) do %>
+                 <%= cl_image_tag bunker.photo.key %>
+                <% end %>
+              <% end%>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= bunker.name %></h2>
+                  <p><%= bunker.description %></p>
+                </div>
+                <h2 class="card-trip-pricing">€<%= bunker.price %></h2>
+                  <%= cl_image_tag bunker.user.photo.key, class: "card-trip-user avatar-bordered"%>
               </div>
-              <h2 class="card-trip-pricing">€<%= bunker.price %></h2>
-                <%= cl_image_tag bunker.user.photo.key, class: "card-trip-user avatar-bordered"%>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-    <hr>
-    <h1> My Pending Bunkers </h1>
-    <div class="cards mt-5">
-      <% @bookings.each do |booking| %>
-        <div class="card-category">
-          <div class="card-trip">
-           <% if booking.bunker.photo.attached? %>
-              <%= link_to bunker_path(booking) do %>
-               <%= cl_image_tag booking.bunker.photo.key %>
-              <% end %>
-            <% end%>
-            <div class="card-trip-infos">
-              <div>
-                <h2><%= booking.bunker.name %></h2>
-                <p>Date:<%= booking.start_date %> - <%= booking.end_date %></p>
-                <% if booking.status == "pending" %>
-                <%= link_to "Accept", booking_path(booking, status: "Accept"), method: :patch, data: { confirm: "Sure to accept ? "} %>
-                <%= link_to "Refuse", booking_path(booking, status: "Refuse"), method: :patch, data: { confirm: "Sure to refuse ? "} %>
-                <% else %>
-                <p> <%= booking.status %></p>
-               <% end%>
-              </div>
-              <h2 class="card-trip-pricing">€ <%= booking.bunker.price * (booking.end_date - booking.start_date).to_i %></h2>
-             <%= cl_image_tag booking.bunker.user.photo.key, class: "card-trip-user avatar-bordered"%>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
+  </div>
 </div>
