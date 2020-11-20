@@ -61,7 +61,7 @@
             <div class="card-trip-infos">
               <div>
                 <h2><%= booking.bunker.name %></h2>
-                <p>Start at:<%= booking.start_date %> and ends at:<%= booking.end_date %></p>
+                <p>Date:<%= booking.start_date %> - <%= booking.end_date %></p>
                 <% if booking.status == "pending" %>
                 <%= link_to "Accept", booking_path(booking), method: :patch, data: { confirm: "Sure to accept ? "} %>
                 <%= link_to "Refuse", booking_path(booking), method: :patch, data: { confirm: "Sure to refuse ? "} %>
