@@ -36,6 +36,10 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   // flatpickr();
   initAutocomplete();
-  initMapbox();
-  loadDynamicBannerText();
+  if (document.getElementById('map')){
+    initMapbox();
+  }
+  if (document.querySelector(".home-banner")){
+    loadDynamicBannerText();
+  }
 });
