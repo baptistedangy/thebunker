@@ -67,8 +67,7 @@
         <% @ownerbunkers.each do |bunker| %>
           <div class="card-category">
             <div class="card-trip">
-             <% if bunker.photo.attached? %>
-                <%= link_to bunker_path(bunker) do %>
+                <%= link_to wine_path(wine) do %>
                  <%= cl_image_tag bunker.photo.key %>
                 <% end %>
               <% end%>
